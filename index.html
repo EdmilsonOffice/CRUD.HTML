@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta nome="autor" content="Edmilson Moreira">
+    <title>Sistema CRUD</title>
+</head>
+<body>
+    <script>
+        //Criar sistema de gerenciamento de usuario.
+        //uma variavel criada fora da função ou programa é chamada de global
+        let arrUsers = [];
+        function showMenu () {
+            parseInt(prompt(`
+            ****Menu*****
+            [1] - Cadastrar usuário
+            [2] - Listar usuário(s)
+            [3] - Atualizar usuário
+            [4] - Deletar usuário
+            [5] - Sair do programa
+            `))
+        }
+        //Metodo de  cadastro de usuario => (Verbo HTTP: Post)
+
+        const addUser = () => {
+            const nameUser = prompt("Informe o nome da pessoa:")
+
+            const emailUser = prompt("Informe o e-mail da pessoa:")
+
+            if(!nameUser  || !emailUser ) {
+                alert("Os campos são obrigatorio");
+            }
+
+            arrUsers.push({nameUser, emailUser});
+            console.log(arrUsers);
+        }
+        addUser();
+
+
+        //metodo de listagem de usuários => (Verbo HTTP: GET)
+        const ListUser = () => {
+
+            let ListUser = '';
+
+            arrUsers.forEach((dataUser) => {
+            ListUser += `Nome: ${dataUser.nameUser}, Email: ${dataUser.emailUser}`
+            })
+
+            console.log(ListUser);
+
+            alert("*****Lista de usuário*****" + ListUser);
+        };
+
+        ListUser();
+
+        // metodod de atualizar (Verbo HTTP: Put)
+        function UpdateUserInfo () {
+            const findEmail = prompt("Informe o e-mail que voçê deseja atualizar!")
+
+            const usuarioEncontrado = arrUsers.find(user => user.emailUser === findEmail)
+            console.log(usuarioEncontrado);
+            if(usuarioEncontrado) {
+                alert("usuario não foi encontrado")
+                return;
+            }
+            usuarioEncontrado.nameUser =
+            usuarioEncontrado.nameUser =
+        }
+        UpdateUserInfo();
+    </script>
+</body>
+</html>
